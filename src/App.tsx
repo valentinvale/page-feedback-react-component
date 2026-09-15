@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import starIcon from "./assets/star.svg";
 import FixedButton from "./components/FixedButton";
-import Feedback from "./components/Feedback";
+import Feedback, { type FeedbackRequest } from "./components/Feedback";
 
 function App() {
   const [feedbackIsVisible, setFeedbackIsVisible] = useState<boolean>(false);
@@ -13,6 +13,17 @@ function App() {
 
   function handleOnCloseFeedback() {
     setFeedbackIsVisible(false);
+  }
+
+  async function handleSubmitFeedback(feedbackRequest: FeedbackRequest) {
+    if (!("rating" in feedbackRequest) || !("page" in feedbackRequest)) {
+      return;
+    }
+
+    console.log(
+      `Received feedback: \nRating: ${feedbackRequest.rating}\n${feedbackRequest.details ? feedbackRequest.details + "\n" : ""} 
+       For page: ${feedbackRequest.page}`,
+    );
   }
 
   return (
@@ -63,19 +74,20 @@ function App() {
         <FixedButton
           icon={starIcon}
           iconAlt="Star icon"
-          text="Give us a feedback!"
+          text="Give us feedback!"
           onClick={handleClickFeedback}
         />
         {feedbackIsVisible && (
           <Feedback
+            minRating={1}
             maxRating={5}
             text="Page Feedback"
             sliderDefaultValue={3}
             sliderLabel="Page Rating"
             textBoxPlaceholder="Please offer a more detailed feedback..."
             detailsThreshold={2}
-            currentPage="/home"
             onClose={handleOnCloseFeedback}
+            onSubmitFeedback={handleSubmitFeedback}
           />
         )}
       </main>

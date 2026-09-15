@@ -1,0 +1,25 @@
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+
+    background-color: bisque;
+    border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    padding: 20px;
+}
+
+.feedback-form button {
+    display: flex;
+    justify-content: space-evenly;
+
+    cursor: pointer;
+
+    background-color: cadetblue;
+    border-radius: 20px;
+    border: 1px solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
