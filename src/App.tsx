@@ -6,13 +6,16 @@ import Feedback, { type FeedbackRequest } from "./components/Feedback";
 
 function App() {
   const [feedbackIsVisible, setFeedbackIsVisible] = useState<boolean>(false);
+  const [feedbackButtonIsDisabled, setFeedbackButtonIsDisabled] = useState<boolean>(false);
 
   function handleClickFeedback() {
     setFeedbackIsVisible(true);
+    setFeedbackButtonIsDisabled(true);
   }
 
   function handleOnCloseFeedback() {
     setFeedbackIsVisible(false);
+    setFeedbackButtonIsDisabled(false);
   }
 
   async function handleSubmitFeedback(feedbackRequest: FeedbackRequest) {
@@ -75,6 +78,7 @@ function App() {
           icon={starIcon}
           iconAlt="Star icon"
           text="Give us feedback!"
+          disabled={feedbackButtonIsDisabled}
           onClick={handleClickFeedback}
         />
         {feedbackIsVisible && (

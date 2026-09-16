@@ -67,9 +67,8 @@ export default function Feedback({
         value={rating}
         onChange={(e) => setRating(Number(e.target.value))}
       />
-      {rating <= 2 && (
-        <input
-          type="text-box"
+      {rating <= detailsThreshold && (
+        <textarea
           id="feedback-text-box"
           placeholder={textBoxPlaceholder}
           value={details}

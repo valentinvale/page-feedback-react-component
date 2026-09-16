@@ -12,12 +12,18 @@ export default function FixedButton({
   iconAlt,
   text,
   onClick,
+  disabled,
   children,
   className,
   ...rest
 }: FixedButtonProps) {
   return (
-    <button className={`fixed-button ${className}`} onClick={onClick} {...rest}>
+    <button
+      className={`fixed-button ${className}`}
+      disabled={disabled}
+      onClick={onClick}
+      {...rest}
+    >
       <img src={icon} alt={iconAlt} />
       <p>{text}</p>
       {children}

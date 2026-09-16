@@ -18,6 +18,11 @@
     background-color: darkcyan;
 }
 
+.fixed-button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
 .fixed-button img {
     width: 20%;
     aspect-ratio: 1;
